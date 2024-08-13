@@ -11,9 +11,20 @@ config_version=5
 [application]
 
 config/name="Game Jam 2024"
-run/main_scene="res://scene/main.tscn"
+run/main_scene="res://scene/player.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
+boot_splash/bg_color=Color(5.13216e-07, 0.592505, 0.926823, 1)
 config/icon="res://art/icon.svg"
+
+[debug]
+
+gdscript/warnings/untyped_declaration=1
+gdscript/warnings/inferred_declaration=1
+gdscript/warnings/unsafe_property_access=1
+gdscript/warnings/unsafe_method_access=1
+gdscript/warnings/unsafe_cast=1
+gdscript/warnings/unsafe_call_argument=1
+gdscript/warnings/return_value_discarded=1
 
 [display]
 
