@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://isos7bjymyuq"]
+[gd_scene load_steps=8 format=3 uid="uid://isos7bjymyuq"]
 
-[ext_resource type="PackedScene" uid="uid://bnrtbanh1r5gp" path="res://scene/small_player.tscn" id="1_ksvjd"]
+[ext_resource type="PackedScene" path="res://scene/small_player.tscn" id="1_ksvjd"]
 [ext_resource type="Script" path="res://script/game_manager.gd" id="1_mcltt"]
-[ext_resource type="PackedScene" uid="uid://h4ahbhfw8yal" path="res://scene/big_player.tscn" id="2_d2l3j"]
-
+[ext_resource type="PackedScene" path="res://scene/big_player.tscn" id="2_d2l3j"]
+[ext_resource type="AudioStream" uid="uid://cr8ku38acuo55" path="res://art/Music/Song 2.mp3" id="4_6b8uh"]
+[ext_resource type="AudioStream" uid="uid://ci81tv4hy06ke" path="res://art/Music/zoom out.mp3" id="5_h0cdl"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_jql5x"]
 
@@ -35,3 +36,13 @@ position = Vector2(-249, -229)
 unique_name_in_owner = true
 process_callback = 0
 position_smoothing_enabled = true
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_6b8uh")
+autoplay = true
+bus = &"Music"
+
+[node name="Zoom sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_h0cdl")
+volume_db = -15.928
+bus = &"SFX"
