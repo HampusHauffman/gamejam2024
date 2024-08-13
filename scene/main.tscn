@@ -1,12 +1,11 @@
 [gd_scene load_steps=10 format=3 uid="uid://isos7bjymyuq"]
 
-[ext_resource type="PackedScene" path="res://scene/small_player.tscn" id="1_ksvjd"]
 [ext_resource type="Script" path="res://script/game_manager.gd" id="1_mcltt"]
-[ext_resource type="PackedScene" path="res://scene/big_player.tscn" id="2_d2l3j"]
+[ext_resource type="PackedScene" uid="uid://c0r2p0b5seiee" path="res://scene/players/base_player_cube_1.tscn" id="2_2dqfd"]
 [ext_resource type="Script" path="res://script/camera.gd" id="4_w7le7"]
-[ext_resource type="PackedScene" uid="uid://cnwvo5jdjvhmb" path="res://scene/star.tscn" id="5_h7rfl"]
-[ext_resource type="PackedScene" path="res://scene/super_big_player.tscn" id="5_jvoub"]
-[ext_resource type="AudioStream" uid="uid://bqpl7vgmhtmdh" path="res://art/Music/win.mp3" id="7_kaj1x"]
+[ext_resource type="PackedScene" uid="uid://2rddi0qawgxr" path="res://scene/star.tscn" id="5_h7rfl"]
+[ext_resource type="PackedScene" uid="uid://fu465etcthi1" path="res://scene/players/base_player_c_1.tscn" id="6_kexnh"]
+[ext_resource type="PackedScene" uid="uid://btfn8hyxtix0" path="res://scene/players/base_player_stair_1.tscn" id="6_njtah"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_jql5x"]
 
@@ -17,10 +16,7 @@
 [node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("players")]
 unique_name_in_owner = true
 script = ExtResource("1_mcltt")
-players = [NodePath("../small_player_1"), NodePath("../big_player_1"), NodePath("../super_big_player"), NodePath("../BasePlayer")]
-
-[node name="big_player_1" parent="." instance=ExtResource("2_d2l3j")]
-position = Vector2(129, -327)
+players = [NodePath("../BasePlayer_Cube1"), NodePath("../BasePlayer_c_1")]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
@@ -31,27 +27,28 @@ shape = SubResource("WorldBoundaryShape2D_jql5x")
 scale = Vector2(1000, 1)
 texture = SubResource("CanvasTexture_u4e3h")
 
-[node name="small_player_1" parent="." instance=ExtResource("1_ksvjd")]
+[node name="BasePlayer_Cube1" parent="." instance=ExtResource("2_2dqfd")]
 position = Vector2(-249, -229)
 
-[node name="Camera2D" type="Camera2D" parent="small_player_1"]
+[node name="Camera2D" type="Camera2D" parent="BasePlayer_Cube1"]
 unique_name_in_owner = true
 script = ExtResource("4_w7le7")
 
-[node name="super_big_player" parent="." instance=ExtResource("5_jvoub")]
-position = Vector2(840, -567)
+[node name="Star" parent="." instance=ExtResource("5_h7rfl")]
 
-[node name="BasePlayer" parent="." instance=ExtResource("1_ksvjd")]
-position = Vector2(-12869, -9939)
-scale = Vector2(512, 512)
-zoom = 200.0
-
-[node name="Star" parent="." node_paths=PackedStringArray("players") instance=ExtResource("5_h7rfl")]
 position = Vector2(-336, -12)
-players = NodePath("../small_player_1")
 
 [node name="StarSFX" type="AudioStreamPlayer" parent="Star"]
 stream = ExtResource("7_kaj1x")
 volume_db = -3.85
 
 [connection signal="tree_entered" from="small_player_1/Camera2D" to="small_player_1/Camera2D" method="_on_tree_entered"]
+[node name="BasePlayer_c_1" parent="." instance=ExtResource("6_kexnh")]
+position = Vector2(-151, -106)
+zoom = 64.0
+
+[node name="BasePlayer_stair_1" parent="." instance=ExtResource("6_njtah")]
+position = Vector2(1053, 345)
+
+[connection signal="tree_entered" from="BasePlayer_Cube1/Camera2D" to="BasePlayer_Cube1/Camera2D" method="_on_tree_entered"]
+

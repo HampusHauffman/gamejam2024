@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://b0htk3nb6s7vt"]
+
+[ext_resource type="Script" path="res://script/base_player.gd" id="1_vnaaw"]
+[ext_resource type="Texture2D" uid="uid://bx70vckqjch6v" path="res://art/player_sprites/player_sprite_trappa_hoger.png" id="2_1pfve"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w6jgv"]
+size = Vector2(30, 3)
+
+[node name="BasePlayer_trappa_h" type="RigidBody2D"]
+lock_rotation = true
+script = ExtResource("1_vnaaw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_1pfve")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(8, -16, 16, -16, 16, 16, -16, 16, -16, 7, -8, 7, -8, -1, 0, -1, 0, -9, 8, -9)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 15.5)
+shape = SubResource("RectangleShape2D_w6jgv")

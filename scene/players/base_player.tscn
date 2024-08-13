@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bufvyuxmp6b44"]
+[gd_scene load_steps=2 format=3 uid="uid://bxseuvesitv2t"]
 
 [ext_resource type="Script" path="res://script/base_player.gd" id="1_3uegj"]
 
 [node name="BasePlayer2" type="RigidBody2D"]
+lock_rotation = true
 script = ExtResource("1_3uegj")

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://c56pjmerhhu1v"]
+
+[ext_resource type="Script" path="res://script/base_player.gd" id="1_q238w"]
+[ext_resource type="Texture2D" uid="uid://b3pr7fswqpsxu" path="res://art/player_sprites/player_sprite_banar.png" id="2_joxm3"]
+
+[node name="BasePlayer_bana" type="RigidBody2D"]
+lock_rotation = true
+script = ExtResource("1_q238w")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_joxm3")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-16, 16, -16, -16, 16, -16, 16, 16, 2, 16, 2, 13, 12, 13, 12, 8, -1, 8, -1, 5, 12, 5, 12, -2, -10, -2, -10, -5, -8, -5, -8, -10, -4, -10, -4, -5, -2, -5, -2, -9, 2, -9, 2, -5, 4, -5, 4, -9, 8, -9, 8, -11, 12, -11, 12, -13, -12, -13, -12, 0, 7, 0, 7, 3, -10, 3, -10, 11, -2, 11, -2, 16)
