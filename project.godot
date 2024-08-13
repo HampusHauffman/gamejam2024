@@ -36,8 +36,6 @@ gdscript/warnings/return_value_discarded=1
 window/size/viewport_width=640
 window/size/viewport_height=360
 window/stretch/mode="canvas_items"
-
-
 enabled=PackedStringArray("res://addons/godot-vim/plugin.cfg")
 
 [input]

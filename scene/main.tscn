@@ -1,11 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://isos7bjymyuq"]
+[gd_scene load_steps=10 format=3 uid="uid://isos7bjymyuq"]
 
 [ext_resource type="PackedScene" path="res://scene/small_player.tscn" id="1_ksvjd"]
 [ext_resource type="Script" path="res://script/game_manager.gd" id="1_mcltt"]
-[ext_resource type="PackedScene" uid="uid://h4ahbhfw8yal" path="res://scene/big_player.tscn" id="2_d2l3j"]
+[ext_resource type="PackedScene" path="res://scene/big_player.tscn" id="2_d2l3j"]
 [ext_resource type="Script" path="res://script/camera.gd" id="4_w7le7"]
-[ext_resource type="PackedScene" uid="uid://2rddi0qawgxr" path="res://scene/star.tscn" id="5_h7rfl"]
-[ext_resource type="PackedScene" uid="uid://bkne7nequ1pr1" path="res://scene/super_big_player.tscn" id="5_jvoub"]
+[ext_resource type="PackedScene" uid="uid://cnwvo5jdjvhmb" path="res://scene/star.tscn" id="5_h7rfl"]
+[ext_resource type="PackedScene" path="res://scene/super_big_player.tscn" id="5_jvoub"]
+[ext_resource type="AudioStream" uid="uid://bqpl7vgmhtmdh" path="res://art/Music/win.mp3" id="7_kaj1x"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_jql5x"]
 
@@ -35,7 +36,6 @@ position = Vector2(-249, -229)
 
 [node name="Camera2D" type="Camera2D" parent="small_player_1"]
 unique_name_in_owner = true
-
 script = ExtResource("4_w7le7")
 
 [node name="super_big_player" parent="." instance=ExtResource("5_jvoub")]
@@ -49,5 +49,9 @@ zoom = 200.0
 [node name="Star" parent="." node_paths=PackedStringArray("players") instance=ExtResource("5_h7rfl")]
 position = Vector2(-336, -12)
 players = NodePath("../small_player_1")
+
+[node name="StarSFX" type="AudioStreamPlayer" parent="Star"]
+stream = ExtResource("7_kaj1x")
+volume_db = -3.85
 
 [connection signal="tree_entered" from="small_player_1/Camera2D" to="small_player_1/Camera2D" method="_on_tree_entered"]
