@@ -4,13 +4,13 @@ const SPEED: float         = 300.0
 const JUMP_VELOCITY: float = -400.0
 @onready var player_number: int = $PlayerNumber.player_number
 
-var current_player_number: int = PlayerNumber.current_player
+@onready var game_manager: GameManager = %GameManager
 
 
 func _physics_process(delta: float) -> void:
-	if player_number == current_player_number:
+	if player_number == game_manager.current_player:
 		handle_input(delta)
-		
+
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
