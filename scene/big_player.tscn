@@ -14,3 +14,6 @@ texture = ExtResource("2_kcdo1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 shape = SubResource("RectangleShape2D_28pq6")
+
+[node name="PlayerNumber" parent="." index="2"]
+player_number = 2
