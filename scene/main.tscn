@@ -10,11 +10,12 @@
 
 [node name="Node2D" type="Node2D"]
 
-[node name="GameManager" type="Node" parent="."]
+[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("players")]
 unique_name_in_owner = true
 script = ExtResource("1_mcltt")
+players = [NodePath("../small_player_1"), NodePath("../big_player_1")]
 
-[node name="BasePlayer" parent="." instance=ExtResource("2_d2l3j")]
+[node name="big_player_1" parent="." instance=ExtResource("2_d2l3j")]
 position = Vector2(245, -498)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
@@ -30,5 +31,6 @@ texture = SubResource("CanvasTexture_u4e3h")
 position = Vector2(-249, -229)
 
 [node name="Camera2D" type="Camera2D" parent="small_player_1"]
+unique_name_in_owner = true
 process_callback = 0
 position_smoothing_enabled = true
