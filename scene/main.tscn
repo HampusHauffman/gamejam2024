@@ -1,20 +1,37 @@
-[gd_scene load_steps=3 format=3 uid="uid://isos7bjymyuq"]
+[gd_scene load_steps=6 format=3 uid="uid://isos7bjymyuq"]
 
-[ext_resource type="PackedScene" uid="uid://bxseuvesitv2t" path="res://scene/base_player.tscn" id="1_7nfru"]
+[ext_resource type="PackedScene" uid="uid://bnrtbanh1r5gp" path="res://scene/small_player.tscn" id="1_ksvjd"]
+[ext_resource type="Script" path="res://script/game_manager.gd" id="1_mcltt"]
+[ext_resource type="PackedScene" uid="uid://h4ahbhfw8yal" path="res://scene/big_player.tscn" id="2_d2l3j"]
+
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_jql5x"]
 
+[sub_resource type="CanvasTexture" id="CanvasTexture_u4e3h"]
+
 [node name="Node2D" type="Node2D"]
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("1_7nfru")]
-position = Vector2(-31, -167)
-metadata/_edit_group_ = true
+[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("players")]
+unique_name_in_owner = true
+script = ExtResource("1_mcltt")
+players = [NodePath("../small_player_1"), NodePath("../big_player_1")]
 
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
-process_callback = 0
-position_smoothing_enabled = true
+[node name="big_player_1" parent="." instance=ExtResource("2_d2l3j")]
+position = Vector2(245, -498)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("WorldBoundaryShape2D_jql5x")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+scale = Vector2(1000, 1)
+texture = SubResource("CanvasTexture_u4e3h")
+
+[node name="small_player_1" parent="." instance=ExtResource("1_ksvjd")]
+position = Vector2(-249, -229)
+
+[node name="Camera2D" type="Camera2D" parent="small_player_1"]
+unique_name_in_owner = true
+process_callback = 0
+position_smoothing_enabled = true
