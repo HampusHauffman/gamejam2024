@@ -1,15 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://bxseuvesitv2t"]
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_sdeqn"]
+[ext_resource type="Script" path="res://script/base_player.gd" id="1_3uegj"]
+[ext_resource type="Script" path="res://script/player_number.gd" id="2_2kedw"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mllxm"]
-size = Vector2(16, 16)
+[node name="BasePlayer" type="CharacterBody2D"]
+script = ExtResource("1_3uegj")
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(16, 16)
-texture = SubResource("CanvasTexture_sdeqn")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_mllxm")
+[node name="PlayerNumber" type="Node" parent="."]
+script = ExtResource("2_2kedw")
