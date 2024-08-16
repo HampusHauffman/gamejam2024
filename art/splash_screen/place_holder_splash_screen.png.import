@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cjk2trtmiohcq"
-path="res://.godot/imported/Utrymningsplan.png-e5e996340ac8cc83d3bc8fdbe0368cfb.ctex"
+uid="uid://dkvmkcc7bcf1q"
+path="res://.godot/imported/place_holder_splash_screen.png-c0245737f7dc81825271416bef6cb7ff.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/splash_screen/Utrymningsplan.png"
-dest_files=["res://.godot/imported/Utrymningsplan.png-e5e996340ac8cc83d3bc8fdbe0368cfb.ctex"]
+source_file="res://art/splash_screen/place_holder_splash_screen.png"
+dest_files=["res://.godot/imported/place_holder_splash_screen.png-c0245737f7dc81825271416bef6cb7ff.ctex"]
 
 [params]
 
