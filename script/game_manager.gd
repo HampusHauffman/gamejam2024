@@ -17,9 +17,5 @@ func _process(delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("zoom_out"):
 		current_player += 1
-		print(current_player)
-		print("zoom out!!!")
 	if event.is_action_pressed("zoom_in"):
 		current_player -= 1
-		print(current_player)
-		print("zoom in!!!")
