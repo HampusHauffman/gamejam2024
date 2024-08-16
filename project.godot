@@ -13,7 +13,10 @@ config_version=5
 config/name="Game Jam 2024"
 run/main_scene="res://scene/main.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
+boot_splash/bg_color=Color(0.228671, 0.0492938, 0.2305, 1)
+boot_splash/image="res://art/splash_screen/Utrymningsplan.png"
 config/icon="res://art/icon.svg"
+boot_splash/minimum_display_time=3000
 
 [debug]
 
