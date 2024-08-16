@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://2rddi0qawgxr"]
+
+[ext_resource type="Texture2D" uid="uid://ck3jno405fcvc" path="res://art/star/pixilart-sprite.png" id="1_on1bn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f8ul1"]
+atlas = ExtResource("1_on1bn")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1xv6m"]
+atlas = ExtResource("1_on1bn")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_610nd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f8ul1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1xv6m")
+}],
+"loop": true,
+"name": &"star",
+"speed": 3.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m8a8j"]
+radius = 3.0
+
+[node name="Star" type="Area2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0.5, -0.5)
+sprite_frames = SubResource("SpriteFrames_610nd")
+animation = &"star"
+autoplay = "star"
+frame = 1
+frame_progress = 0.484292
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_m8a8j")
