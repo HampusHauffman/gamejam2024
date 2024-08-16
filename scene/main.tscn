@@ -11,12 +11,15 @@
 [node name="Node2D" type="Node2D"]
 
 [node name="GameManager" type="Node" parent="."]
+unique_name_in_owner = true
 script = ExtResource("1_mcltt")
 
-[node name="BasePlayer" parent="." instance=ExtResource("2_d2l3j")]
-position = Vector2(245, -498)
+[node name="big_player" parent="." instance=ExtResource("2_d2l3j")]
+position = Vector2(-25, 26)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, 288)
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("WorldBoundaryShape2D_jql5x")
@@ -26,7 +29,8 @@ scale = Vector2(1000, 1)
 texture = SubResource("CanvasTexture_u4e3h")
 
 [node name="small_player_1" parent="." instance=ExtResource("1_ksvjd")]
-position = Vector2(-249, -229)
+position = Vector2(294, 241)
+metadata/_edit_group_ = true
 
 [node name="Camera2D" type="Camera2D" parent="small_player_1"]
 process_callback = 0
