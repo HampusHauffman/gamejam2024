@@ -1,12 +1,12 @@
 extends CharacterBody2D
 class_name BasePlayer
 
-const SPEED: float = 300.0
+const SPEED: float         = 300.0
 const JUMP_VELOCITY: float = -400.0
 # This is set by the game manager.
 var isActive: bool = false
-@export var zoom : float = 1.0
-@export var scaleFactor : int = 1
+
+@export var zoom: float = 1.0
 
 
 func set_is_active(active: bool) -> void:

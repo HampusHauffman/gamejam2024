@@ -7,12 +7,11 @@
 size = Vector2(256, 256)
 
 [node name="BasePlayer" instance=ExtResource("1_ejced")]
+zoom = 8.0
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." index="0"]
-scale = Vector2(2, 2)
 texture = ExtResource("2_kcdo1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
-scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_28pq6")
