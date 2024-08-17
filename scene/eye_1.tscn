@@ -209,5 +209,4 @@ position = Vector2(-0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_yqje5")
 animation = &"Eye 1"
 autoplay = "Eye 1"
-frame = 8
-frame_progress = 0.624595
+frame_progress = 0.308719

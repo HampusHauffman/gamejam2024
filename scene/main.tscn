@@ -1,9 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://isos7bjymyuq"]
+[gd_scene load_steps=7 format=3 uid="uid://isos7bjymyuq"]
 
-[ext_resource type="PackedScene" uid="uid://bnrtbanh1r5gp" path="res://scene/small_player.tscn" id="1_ksvjd"]
+[ext_resource type="PackedScene" path="res://scene/small_player.tscn" id="1_ksvjd"]
 [ext_resource type="Script" path="res://script/game_manager.gd" id="1_mcltt"]
-[ext_resource type="PackedScene" uid="uid://h4ahbhfw8yal" path="res://scene/big_player.tscn" id="2_d2l3j"]
-
+[ext_resource type="PackedScene" path="res://scene/big_player.tscn" id="2_d2l3j"]
+[ext_resource type="PackedScene" uid="uid://2rddi0qawgxr" path="res://scene/star.tscn" id="5_h7rfl"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_jql5x"]
 
@@ -35,3 +35,7 @@ position = Vector2(-249, -229)
 unique_name_in_owner = true
 process_callback = 0
 position_smoothing_enabled = true
+
+[node name="Star" parent="." node_paths=PackedStringArray("players") instance=ExtResource("5_h7rfl")]
+position = Vector2(-453, -24)
+players = NodePath("../small_player_1")
