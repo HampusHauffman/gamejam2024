@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://isos7bjymyuq"]
+[gd_scene load_steps=10 format=3 uid="uid://isos7bjymyuq"]
 
 [ext_resource type="Script" path="res://script/game_manager.gd" id="1_mcltt"]
 [ext_resource type="PackedScene" uid="uid://c0r2p0b5seiee" path="res://scene/players/base_player_cube_1.tscn" id="2_2dqfd"]
@@ -38,6 +38,11 @@ script = ExtResource("4_w7le7")
 
 position = Vector2(-336, -12)
 
+[node name="StarSFX" type="AudioStreamPlayer" parent="Star"]
+stream = ExtResource("7_kaj1x")
+volume_db = -3.85
+
+[connection signal="tree_entered" from="small_player_1/Camera2D" to="small_player_1/Camera2D" method="_on_tree_entered"]
 [node name="BasePlayer_c_1" parent="." instance=ExtResource("6_kexnh")]
 position = Vector2(-151, -106)
 zoom = 64.0
