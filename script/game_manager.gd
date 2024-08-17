@@ -1,7 +1,7 @@
 extends Node
 class_name GameManager
 
-# The index of the active player.
+# The index of the active playeer.
 @export var active_player_index: int = 0
 # The list of players in the scene. These players are only referd to so the camera can switch between them.
 @export var players: Array[BasePlayer] = []
