@@ -35,6 +35,7 @@ position = Vector2(-98, -113)
 script = ExtResource("4_07i18")
 
 [node name="BasePlayer2" parent="." instance=ExtResource("1_ksvjd")]
+position = Vector2(-104, -194)
 zoom = 2.0
 
 [connection signal="tree_entered" from="BasePlayer/Camera2D" to="BasePlayer/Camera2D" method="_on_tree_entered"]

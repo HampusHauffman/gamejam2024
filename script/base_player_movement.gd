@@ -20,7 +20,15 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
+
 	move_and_slide()
+
+	for i in get_slide_collision_count():
+		var c: KinematicCollision2D = get_slide_collision(i)
+		if c.get_collider() is RigidBody2D:
+			var k: RigidBody2D = c.get_collider() as RigidBody2D
+			k.apply_central_impulse(-c.get_normal() * 80)
+			print(-c.get_normal())
 
 
 func handle_input(delta: float) -> void:

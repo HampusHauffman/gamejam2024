@@ -23,7 +23,7 @@ shape = SubResource("RectangleShape2D_yayic")
 texture = ExtResource("2_issao")
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
-process_mode = 4
+lock_rotation = true
 script = ExtResource("4_xcv06")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
