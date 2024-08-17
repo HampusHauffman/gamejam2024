@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://2rddi0qawgxr"]
+[gd_scene load_steps=7 format=3 uid="uid://cnwvo5jdjvhmb"]
 
 [ext_resource type="Texture2D" uid="uid://ck3jno405fcvc" path="res://art/star/pixilart-sprite.png" id="1_on1bn"]
 
@@ -10,7 +10,14 @@ script/source = "extends Area2D
 
 func _on_body_entered(body):
 	if players == body:
-		queue_free()
+		$StarSFX.play()
+		$StarDelay.start()
+		$AnimatedSprite2D.position.y =2000
+		$CollisionShape2D.position.y =2000
+
+
+func _on_star_delay_timeout() -> void:
+	queue_free()
 "
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f8ul1"]
@@ -48,8 +55,13 @@ animation = &"star"
 autoplay = "star"
 frame = 1
 frame_progress = 0.484292
+offset = Vector2(-3.61, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_m8a8j")
 
+[node name="StarDelay" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="StarDelay" to="." method="_on_star_delay_timeout"]

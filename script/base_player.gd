@@ -1,42 +1,69 @@
-extends CharacterBody2D
+extends RigidBody2D
 class_name BasePlayer
 
-const SPEED: float         = 300.0
-const JUMP_VELOCITY: float = -400.0
+const JUMP_VELOCITY: float = -100.0
+const PUSH_STRENGTH: float = 2000.0  # Adjust this value as needed
+const MAX_SPEED: float     = 200.0  # Maximum speed for the player
 # This is set by the game manager.
 var isActive: bool = false
 
 @export var zoom: float = 1.0
 
+@onready var area_2d = $Area2D
+# Reference to the CollisionShape2D node
+@onready var collision_shape: CollisionShape2D = $CollisionShape2D
+
+
+
+func _ready() -> void:
+	pass
+
+
 
 func set_is_active(active: bool) -> void:
 	isActive = active
-	if not active:
-		velocity.x = 0  # TODO Fix this bug. currently we continue moving right if we deactivate the player while moving right.
 
 
 func _physics_process(delta: float) -> void:
 	if isActive:
 		handle_input(delta)
 
-	# Add the gravity.
-	if not is_on_floor():
-		velocity += get_gravity() * delta
-	move_and_slide()
+
+func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
+	state.linear_velocity.x = clamp(state.linear_velocity.x, -MAX_SPEED, MAX_SPEED)
+
+
+
+func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
+	set_scale(Vector2(zoom, zoom))
 
 
 func handle_input(delta: float) -> void:
 	if not isActive:
 		return
 
+	if not is_on_floor() and  isActive:
+		var physics_material: PhysicsMaterial = PhysicsMaterial.new()
+		physics_material.set_friction(0)
+		set_physics_material_override(physics_material)
+	else:
+		var physics_material: PhysicsMaterial = PhysicsMaterial.new()
+		physics_material.set_friction(1)
+		set_physics_material_override(physics_material)
+
 	# Handle jump.
 	if Input.is_action_pressed("jump") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+		apply_central_impulse(Vector2(0, JUMP_VELOCITY))
 
 	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("left", "right")
-	if direction:
-		velocity.x = direction * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+	if direction != 0:
+		apply_central_impulse(Vector2(direction * PUSH_STRENGTH * delta, 0))
+
+
+
+func is_on_floor() -> bool:
+	for a in area_2d.get_overlapping_bodies():
+		if a != self:
+			return true
+	return false

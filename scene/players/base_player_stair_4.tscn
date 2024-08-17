@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://r1wjg7ykp0f3"]
+
+[ext_resource type="Script" path="res://script/base_player.gd" id="1_7crbi"]
+[ext_resource type="Texture2D" uid="uid://d3yixgwyvieuv" path="res://art/player_sprites/player_sprite_stair_4.png" id="2_6nx60"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ru38n"]
+size = Vector2(30, 3)
+
+[node name="BasePlayer_stair_4" type="RigidBody2D"]
+script = ExtResource("1_7crbi")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_6nx60")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-16, -16, 0, -16, 0, 0, 16, 0, 16, 16, -16, 16)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 15.5)
+shape = SubResource("RectangleShape2D_ru38n")

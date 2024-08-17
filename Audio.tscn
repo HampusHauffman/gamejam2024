@@ -1,0 +1,36 @@
+[gd_scene load_steps=7 format=3 uid="uid://cnsulg15deljb"]
+
+[ext_resource type="Script" path="res://scene/audio_manager.gd" id="1_magi1"]
+[ext_resource type="AudioStream" uid="uid://b0quha8spq62s" path="res://art/Music/rockslide.mp3" id="2_rd15v"]
+[ext_resource type="AudioStream" uid="uid://0i1agep6byp1" path="res://art/Music/jump.mp3" id="3_x6j5y"]
+[ext_resource type="AudioStream" uid="uid://cr8ku38acuo55" path="res://art/Music/Song 2.mp3" id="4_d218s"]
+[ext_resource type="AudioStream" uid="uid://ci81tv4hy06ke" path="res://art/Music/zoom out.mp3" id="5_f0d38"]
+[ext_resource type="AudioStream" uid="uid://k4u4p2yvyfug" path="res://art/Music/zoom in.mp3" id="6_tb4xp"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="AudioManager" type="Node" parent="."]
+script = ExtResource("1_magi1")
+
+[node name="SlideSound" type="AudioStreamPlayer" parent="AudioManager"]
+stream = ExtResource("2_rd15v")
+bus = &"SFX"
+playback_type = 1
+
+[node name="JumpSFX" type="AudioStreamPlayer" parent="AudioManager"]
+stream = ExtResource("3_x6j5y")
+bus = &"SFX"
+
+[node name="MusicGame" type="AudioStreamPlayer" parent="AudioManager"]
+stream = ExtResource("4_d218s")
+volume_db = -16.865
+autoplay = true
+bus = &"Music"
+
+[node name="ZoomOutSound" type="AudioStreamPlayer" parent="AudioManager"]
+stream = ExtResource("5_f0d38")
+bus = &"SFX"
+
+[node name="ZoomInSound" type="AudioStreamPlayer" parent="AudioManager"]
+stream = ExtResource("6_tb4xp")
+bus = &"SFX"
