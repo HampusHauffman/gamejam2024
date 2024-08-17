@@ -4,8 +4,8 @@ class_name BasePlayer
 const SPEED: float         = 300.0
 const JUMP_VELOCITY: float = -400.0
 # This is set by the game manager.
-var isActive: bool = false
-var is_on_ground = false
+var isActive: bool     = false
+var is_on_ground: bool = false
 
 
 @export var zoom: float = 1.0
@@ -25,10 +25,10 @@ func _physics_process(delta: float) -> void:
 	if not is_on_ground:
 		velocity += get_gravity() * delta
 		
-	var horizontal_velocity = Vector2(velocity.x, 0)
-	var collision = move_and_collide(horizontal_velocity * delta * zoom/2)
+	var horizontal_velocity: Vector2    = Vector2(velocity.x, 0)
+	var collision: KinematicCollision2D = move_and_collide(horizontal_velocity * delta * zoom/2)
 	if collision:
-		var slide_factor = 1  # Adjust this value to control sliding
+		var slide_factor: int = 1  # Adjust this value to control sliding
 		horizontal_velocity = horizontal_velocity.slide(collision.get_normal()) * slide_factor
 		velocity.x = horizontal_velocity.x
 

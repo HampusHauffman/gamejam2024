@@ -2,9 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://bnrtbanh1r5gp" path="res://scene/small_player.tscn" id="1_ksvjd"]
 [ext_resource type="Script" path="res://script/game_manager.gd" id="1_mcltt"]
-[ext_resource type="PackedScene" uid="uid://h4ahbhfw8yal" path="res://scene/big_player.tscn" id="2_d2l3j"]
+[ext_resource type="PackedScene" path="res://scene/big_player.tscn" id="2_d2l3j"]
 [ext_resource type="Script" path="res://script/camera.gd" id="4_w7le7"]
-[ext_resource type="PackedScene" path="res://scene/star.tscn" id="5_h7rfl"]
+[ext_resource type="PackedScene" uid="uid://2rddi0qawgxr" path="res://scene/star.tscn" id="5_h7rfl"]
 [ext_resource type="PackedScene" path="res://scene/super_big_player.tscn" id="5_jvoub"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_jql5x"]
