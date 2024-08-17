@@ -1,10 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://bxseuvesitv2t"]
+[gd_scene load_steps=2 format=3 uid="uid://bxseuvesitv2t"]
 
 [ext_resource type="Script" path="res://script/base_player.gd" id="1_3uegj"]
-[ext_resource type="Script" path="res://script/player_number.gd" id="2_2kedw"]
 
 [node name="BasePlayer" type="CharacterBody2D"]
 script = ExtResource("1_3uegj")
-
-[node name="PlayerNumber" type="Node" parent="."]
-script = ExtResource("2_2kedw")
