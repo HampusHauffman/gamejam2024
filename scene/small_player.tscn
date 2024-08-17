@@ -1,15 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://bnrtbanh1r5gp"]
+[gd_scene load_steps=5 format=3 uid="uid://bnrtbanh1r5gp"]
 
-[ext_resource type="PackedScene" uid="uid://bxseuvesitv2t" path="res://scene/base_player.tscn" id="1_kjhnc"]
-[ext_resource type="Texture2D" uid="uid://0ih5cbow7cub" path="res://art/32x32_red.png" id="2_7qctd"]
+[ext_resource type="Script" path="res://script/base_player.gd" id="1_qomoh"]
+[ext_resource type="Script" path="res://script/base_player_movement.gd" id="2_i21lh"]
+[ext_resource type="Texture2D" uid="uid://0ih5cbow7cub" path="res://art/32x32_red.png" id="2_issao"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_74t6j"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yayic"]
 size = Vector2(32, 32)
 
-[node name="BasePlayer" instance=ExtResource("1_kjhnc")]
+[node name="BasePlayer" type="Node2D"]
+script = ExtResource("1_qomoh")
+metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="." index="0"]
-texture = ExtResource("2_7qctd")
+[node name="BasePlayerMovement" type="CharacterBody2D" parent="."]
+script = ExtResource("2_i21lh")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
-shape = SubResource("RectangleShape2D_74t6j")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BasePlayerMovement"]
+shape = SubResource("RectangleShape2D_yayic")
+
+[node name="Sprite2D" type="Sprite2D" parent="BasePlayerMovement"]
+texture = ExtResource("2_issao")

@@ -10,6 +10,11 @@ class_name GameManager
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# Activate the first player.
+	call_deferred("set_initial_ready")
+
+
+# We need to wait for the players to be added to the scene before we can set the initial player.
+func set_initial_ready() -> void:
 	players[active_player_index].set_is_active(true)
 
 
