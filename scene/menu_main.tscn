@@ -1,7 +1,69 @@
-[gd_scene load_steps=6 format=3 uid="uid://b81aioya6myo8"]
+[gd_scene load_steps=12 format=3 uid="uid://b81aioya6myo8"]
 
 [ext_resource type="Script" path="res://script/menu_main.gd" id="1_h6e38"]
-[ext_resource type="AudioStream" uid="uid://bn7ftgl3hn1w2" path="res://art/Music/Song loop.mp3" id="2_jpmq4"]
+[ext_resource type="AudioStream" uid="uid://b2qiwsokx4x6d" path="res://art/Music/menu sound hover.mp3" id="2_unp30"]
+[ext_resource type="AudioStream" uid="uid://cr8ku38acuo55" path="res://art/Music/Song 2.mp3" id="3_3alxn"]
+[ext_resource type="AudioStream" uid="uid://b1ucg0roau10h" path="res://art/Music/Mwnu sound click.mp3" id="3_nvfug"]
+
+[sub_resource type="Animation" id="Animation_kglpg"]
+resource_name = "animation_play_pressed"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("click_sound:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0.54902, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_t2kbq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("click_sound:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qe8r2"]
+_data = {
+"RESET": SubResource("Animation_t2kbq"),
+"animation_play_pressed": SubResource("Animation_kglpg")
+}
 
 [sub_resource type="Animation" id="Animation_hkb1a"]
 length = 0.001
@@ -39,6 +101,9 @@ _data = {
 "Show": SubResource("Animation_f3fkc")
 }
 
+[sub_resource type="Theme" id="Theme_nms1c"]
+default_font_size = 8
+
 [node name="menu_main" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -54,12 +119,23 @@ offset_left = 240.0
 offset_top = 147.0
 offset_right = 400.0
 offset_bottom = 213.0
+tooltip_text = "
+"
 
 [node name="Play" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "PLAY"
 
 [node name="hover_sound_play" type="AudioStreamPlayer2D" parent="VBoxContainer/Play"]
+stream = ExtResource("2_unp30")
+
+[node name="click_sound" type="AudioStreamPlayer2D" parent="VBoxContainer/Play"]
+stream = ExtResource("3_nvfug")
+
+[node name="animation_play_pressed" type="AnimationPlayer" parent="VBoxContainer/Play"]
+libraries = {
+"": SubResource("AnimationLibrary_qe8r2")
+}
 
 [node name="Quit" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -101,11 +177,30 @@ libraries = {
 autoplay = "Show"
 
 [node name="menu_main_song" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("2_jpmq4")
+stream = ExtResource("3_3alxn")
 pitch_scale = 0.5
 autoplay = true
+
+[node name="scene_delay" type="Timer" parent="."]
+wait_time = 0.25
+
+[node name="created_by" type="Label" parent="."]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 271.0
+offset_right = 450.0
+offset_bottom = 358.0
+theme = SubResource("Theme_nms1c")
+text = "created by: 
+Adam mayer
+hampus hauffman
+sixten hauffman
+oskar hernberg
+oscar westerblom"
+uppercase = true
 
 [connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
 [connection signal="mouse_entered" from="VBoxContainer/Play" to="." method="_on_play_mouse_entered"]
 [connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="timeout" from="scene_delay" to="." method="_on_scene_delay_timeout"]
