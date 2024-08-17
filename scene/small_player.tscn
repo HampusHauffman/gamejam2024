@@ -7,6 +7,7 @@
 size = Vector2(32, 32)
 
 [node name="BasePlayer" instance=ExtResource("1_kjhnc")]
+lock_rotation = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." index="0"]
 texture = ExtResource("2_7qctd")
