@@ -21,8 +21,6 @@ func _physics_process(delta: float) -> void:
 	if isActive:
 		handle_input(delta)
 
-	print(linear_velocity)
-
 func handle_input(delta: float) -> void:
 	if not isActive:
 		return
