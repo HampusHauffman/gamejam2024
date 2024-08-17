@@ -3,4 +3,5 @@
 [ext_resource type="Script" path="res://script/base_player.gd" id="1_3uegj"]
 
 [node name="BasePlayer2" type="RigidBody2D"]
+lock_rotation = true
 script = ExtResource("1_3uegj")
