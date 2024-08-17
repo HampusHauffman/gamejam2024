@@ -15,7 +15,7 @@ run/main_scene="res://scene/main.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 boot_splash/image="res://art/splash_screen/place_holder_splash_screen.png"
 config/icon="res://art/icon.svg"
-boot_splash/minimum_display_time=5000
+boot_splash/minimum_display_time=1
 
 [audio]
 
@@ -36,6 +36,9 @@ gdscript/warnings/return_value_discarded=1
 window/size/viewport_width=640
 window/size/viewport_height=360
 window/stretch/mode="canvas_items"
+
+
+enabled=PackedStringArray("res://addons/godot-vim/plugin.cfg")
 
 [input]
 

@@ -1,6 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://2rddi0qawgxr"]
+[gd_scene load_steps=7 format=3 uid="uid://2rddi0qawgxr"]
 
 [ext_resource type="Texture2D" uid="uid://ck3jno405fcvc" path="res://art/star/pixilart-sprite.png" id="1_on1bn"]
+
+[sub_resource type="GDScript" id="GDScript_gweca"]
+script/source = "extends Area2D
+
+@export var players: BasePlayer
+
+
+func _on_body_entered(body):
+	if players == body:
+		queue_free()
+"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f8ul1"]
 atlas = ExtResource("1_on1bn")
@@ -28,6 +39,7 @@ animations = [{
 radius = 3.0
 
 [node name="Star" type="Area2D"]
+script = SubResource("GDScript_gweca")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0.5, -0.5)
@@ -39,3 +51,5 @@ frame_progress = 0.484292
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_m8a8j")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

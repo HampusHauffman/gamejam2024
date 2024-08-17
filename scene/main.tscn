@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://isos7bjymyuq"]
+[gd_scene load_steps=9 format=3 uid="uid://isos7bjymyuq"]
 
 [ext_resource type="PackedScene" path="res://scene/small_player.tscn" id="1_ksvjd"]
 [ext_resource type="Script" path="res://script/game_manager.gd" id="1_mcltt"]
-[ext_resource type="PackedScene" path="res://scene/big_player.tscn" id="2_d2l3j"]
-[ext_resource type="AudioStream" uid="uid://cr8ku38acuo55" path="res://art/Music/Song 2.mp3" id="4_6b8uh"]
-[ext_resource type="AudioStream" uid="uid://ci81tv4hy06ke" path="res://art/Music/zoom out.mp3" id="5_h0cdl"]
+[ext_resource type="PackedScene" uid="uid://h4ahbhfw8yal" path="res://scene/big_player.tscn" id="2_d2l3j"]
+[ext_resource type="Script" path="res://script/camera.gd" id="4_w7le7"]
+[ext_resource type="PackedScene" uid="uid://2rddi0qawgxr" path="res://scene/star.tscn" id="5_h7rfl"]
+[ext_resource type="PackedScene" uid="uid://bkne7nequ1pr1" path="res://scene/super_big_player.tscn" id="5_jvoub"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_jql5x"]
 
@@ -15,10 +16,10 @@
 [node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("players")]
 unique_name_in_owner = true
 script = ExtResource("1_mcltt")
-players = [NodePath("../small_player_1"), NodePath("../big_player_1")]
+players = [NodePath("../small_player_1"), NodePath("../big_player_1"), NodePath("../super_big_player"), NodePath("../BasePlayer")]
 
 [node name="big_player_1" parent="." instance=ExtResource("2_d2l3j")]
-position = Vector2(245, -498)
+position = Vector2(129, -327)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
@@ -34,15 +35,19 @@ position = Vector2(-249, -229)
 
 [node name="Camera2D" type="Camera2D" parent="small_player_1"]
 unique_name_in_owner = true
-process_callback = 0
-position_smoothing_enabled = true
 
-[node name="Music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_6b8uh")
-autoplay = true
-bus = &"Music"
+script = ExtResource("4_w7le7")
 
-[node name="Zoom sound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_h0cdl")
-volume_db = -15.928
-bus = &"SFX"
+[node name="super_big_player" parent="." instance=ExtResource("5_jvoub")]
+position = Vector2(840, -567)
+
+[node name="BasePlayer" parent="." instance=ExtResource("1_ksvjd")]
+position = Vector2(-12869, -9939)
+scale = Vector2(512, 512)
+zoom = 200.0
+
+[node name="Star" parent="." node_paths=PackedStringArray("players") instance=ExtResource("5_h7rfl")]
+position = Vector2(-336, -12)
+players = NodePath("../small_player_1")
+
+[connection signal="tree_entered" from="small_player_1/Camera2D" to="small_player_1/Camera2D" method="_on_tree_entered"]
