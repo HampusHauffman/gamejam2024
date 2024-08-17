@@ -35,6 +35,7 @@ unique_name_in_owner = true
 script = ExtResource("4_w7le7")
 
 [node name="Star" parent="." instance=ExtResource("5_h7rfl")]
+
 position = Vector2(-336, -12)
 
 [node name="BasePlayer_c_1" parent="." instance=ExtResource("6_kexnh")]
@@ -45,3 +46,4 @@ zoom = 64.0
 position = Vector2(1053, 345)
 
 [connection signal="tree_entered" from="BasePlayer_Cube1/Camera2D" to="BasePlayer_Cube1/Camera2D" method="_on_tree_entered"]
+
