@@ -4,7 +4,7 @@ class_name BasePlayerMovement
 const SPEED: float         = 300.0
 const JUMP_VELOCITY: float = -400.0
 # This is set by the game manager.
-var isActive: bool = false
+var isActive: bool = true
 
 
 func set_is_active(active: bool) -> void:

@@ -12,17 +12,23 @@ size = Vector2(32, 32)
 script = ExtResource("1_qomoh")
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_issao")
-
 [node name="BasePlayerMovement" type="CharacterBody2D" parent="."]
+process_mode = 4
 script = ExtResource("2_i21lh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BasePlayerMovement"]
 shape = SubResource("RectangleShape2D_yayic")
 
+[node name="Sprite2D" type="Sprite2D" parent="BasePlayerMovement"]
+texture = ExtResource("2_issao")
+
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
+process_mode = 4
 script = ExtResource("4_xcv06")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
 shape = SubResource("RectangleShape2D_yayic")
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+modulate = Color(9.62615e-08, 0.339569, 0.497854, 1)
+texture = ExtResource("2_issao")
