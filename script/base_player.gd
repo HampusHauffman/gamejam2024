@@ -14,7 +14,9 @@ var isActive: bool = false
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 
 
-# Raycast to check for floor collision
+func _ready() -> void:
+	pass
+
 
 func set_is_active(active: bool) -> void:
 	isActive = active
@@ -24,12 +26,23 @@ func _physics_process(delta: float) -> void:
 	if isActive:
 		handle_input(delta)
 
+
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	state.linear_velocity.x = clamp(state.linear_velocity.x, -MAX_SPEED, MAX_SPEED)
+
 
 func handle_input(delta: float) -> void:
 	if not isActive:
 		return
+
+	if not is_on_floor() and  isActive:
+		var physics_material: PhysicsMaterial = PhysicsMaterial.new()
+		physics_material.set_friction(0)
+		set_physics_material_override(physics_material)
+	else:
+		var physics_material: PhysicsMaterial = PhysicsMaterial.new()
+		physics_material.set_friction(1)
+		set_physics_material_override(physics_material)
 
 	# Handle jump.
 	if Input.is_action_pressed("jump") and is_on_floor():
