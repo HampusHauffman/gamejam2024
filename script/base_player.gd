@@ -8,20 +8,28 @@ const MAX_SPEED: float     = 200.0  # Maximum speed for the player
 var isActive: bool = false
 
 @export var zoom: float = 1.0
-@onready var area_2d = $Area2D
 
+@onready var area_2d = $Area2D
 # Reference to the CollisionShape2D node
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
+
+
 # Raycast to check for floor collision
 
 func set_is_active(active: bool) -> void:
 	isActive = active
+
 
 func _physics_process(delta: float) -> void:
 	if isActive:
 		handle_input(delta)
 
 	print(linear_velocity)
+
+
+func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
+	set_scale(Vector2(zoom, zoom))
+
 
 func handle_input(delta: float) -> void:
 	if not isActive:
@@ -36,6 +44,7 @@ func handle_input(delta: float) -> void:
 	if direction != 0:
 		apply_central_impulse(Vector2(direction * PUSH_STRENGTH * delta, 0))
 		linear_velocity.clamp(Vector2(-MAX_SPEED, -MAX_SPEED), Vector2(MAX_SPEED, MAX_SPEED))
+
 
 func is_on_floor() -> bool:
 	for a in area_2d.get_overlapping_bodies():

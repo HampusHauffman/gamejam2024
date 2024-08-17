@@ -10,18 +10,20 @@ size = Vector2(30, 3)
 size = Vector2(20, 2.5)
 
 [node name="BasePlayer_c_1" type="RigidBody2D"]
-scale = Vector2(64, 64)
 lock_rotation = true
 script = ExtResource("1_ov4g7")
-zoom = 64.0
+zoom = 10.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(64, 64)
 texture = ExtResource("2_esg6f")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+scale = Vector2(64, 64)
 polygon = PackedVector2Array(-16, -16, 16, -16, 16, -7, -4, -7, -4, 7, 16, 7, 16, 16, -16, 16)
 
 [node name="Area2D" type="Area2D" parent="."]
+scale = Vector2(64, 64)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, 16)

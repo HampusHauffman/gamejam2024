@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bufvyuxmp6b44"]
+
+[ext_resource type="Script" path="res://script/base_player.gd" id="1_3uegj"]
+
+[node name="BasePlayer2" type="RigidBody2D"]
+script = ExtResource("1_3uegj")
