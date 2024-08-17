@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://isos7bjymyuq"]
+[gd_scene load_steps=9 format=3 uid="uid://isos7bjymyuq"]
 
 [ext_resource type="PackedScene" uid="uid://bnrtbanh1r5gp" path="res://scene/small_player.tscn" id="1_ksvjd"]
 [ext_resource type="Script" path="res://script/game_manager.gd" id="1_mcltt"]
 [ext_resource type="PackedScene" uid="uid://h4ahbhfw8yal" path="res://scene/big_player.tscn" id="2_d2l3j"]
 [ext_resource type="Script" path="res://script/camera.gd" id="4_w7le7"]
-[ext_resource type="PackedScene" uid="uid://dim27ylwltinp" path="res://scene/super_big_player.tscn" id="5_jvoub"]
+[ext_resource type="PackedScene" uid="uid://2rddi0qawgxr" path="res://scene/star.tscn" id="5_h7rfl"]
+[ext_resource type="PackedScene" uid="uid://bkne7nequ1pr1" path="res://scene/super_big_player.tscn" id="5_jvoub"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_jql5x"]
 
@@ -43,8 +44,13 @@ script = ExtResource("4_w7le7")
 position = Vector2(840, -567)
 
 [node name="BasePlayer" parent="." instance=ExtResource("1_ksvjd")]
-position = Vector2(-5927, -4916)
+position = Vector2(-12869, -9939)
 scale = Vector2(512, 512)
 zoom = 200.0
 
+[node name="Star" parent="." node_paths=PackedStringArray("players") instance=ExtResource("5_h7rfl")]
+position = Vector2(-400, -21)
+players = NodePath("../small_player_1")
+
 [connection signal="tree_entered" from="small_player_1/Camera2D" to="small_player_1/Camera2D" method="_on_tree_entered"]
+[connection signal="body_entered" from="Star" to="Star" method="_on_body_entered"]

@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://2rddi0qawgxr"]
+[gd_scene load_steps=7 format=3 uid="uid://2rddi0qawgxr"]
 
+[ext_resource type="Script" path="res://script/star.gd" id="1_2yfci"]
 [ext_resource type="Texture2D" uid="uid://ck3jno405fcvc" path="res://art/star/pixilart-sprite.png" id="1_on1bn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f8ul1"]
@@ -28,6 +29,7 @@ animations = [{
 radius = 3.0
 
 [node name="Star" type="Area2D"]
+script = ExtResource("1_2yfci")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0.5, -0.5)
