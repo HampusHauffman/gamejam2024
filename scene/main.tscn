@@ -4,7 +4,6 @@
 [ext_resource type="Script" path="res://script/game_manager.gd" id="1_mcltt"]
 [ext_resource type="PackedScene" uid="uid://h4ahbhfw8yal" path="res://scene/big_player.tscn" id="2_d2l3j"]
 
-
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_jql5x"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_u4e3h"]
