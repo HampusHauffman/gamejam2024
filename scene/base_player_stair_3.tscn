@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://crht8y76mweil"]
+
+[ext_resource type="Script" path="res://script/base_player.gd" id="1_ibh3r"]
+[ext_resource type="Texture2D" uid="uid://cm3dhe81xq2pg" path="res://art/player_sprites/player_sprite_stair_3.png" id="2_pl88p"]
+
+[node name="BasePlayer_stair_3" type="CharacterBody2D"]
+script = ExtResource("1_ibh3r")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_pl88p")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-16, -16, 16, -16, 16, 0, 0, 0, 0, 16, -16, 16)
