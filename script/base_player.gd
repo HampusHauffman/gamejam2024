@@ -14,8 +14,10 @@ var isActive: bool = false
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 
 
+
 func _ready() -> void:
 	pass
+
 
 
 func set_is_active(active: bool) -> void:
@@ -29,6 +31,11 @@ func _physics_process(delta: float) -> void:
 
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	state.linear_velocity.x = clamp(state.linear_velocity.x, -MAX_SPEED, MAX_SPEED)
+
+
+
+func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
+	set_scale(Vector2(zoom, zoom))
 
 
 func handle_input(delta: float) -> void:
@@ -52,6 +59,7 @@ func handle_input(delta: float) -> void:
 	var direction := Input.get_axis("left", "right")
 	if direction != 0:
 		apply_central_impulse(Vector2(direction * PUSH_STRENGTH * delta, 0))
+
 
 
 func is_on_floor() -> bool:

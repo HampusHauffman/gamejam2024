@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://fu465etcthi1"]
+
+[ext_resource type="Script" path="res://script/base_player.gd" id="1_ov4g7"]
+[ext_resource type="Texture2D" uid="uid://dbol0k0yh083n" path="res://art/player_sprites/player_sprite_c_1.png" id="2_esg6f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oi63f"]
+size = Vector2(30, 3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ektnu"]
+size = Vector2(20, 2.5)
+
+[node name="BasePlayer_c_1" type="RigidBody2D"]
+lock_rotation = true
+script = ExtResource("1_ov4g7")
+zoom = 10.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(64, 64)
+texture = ExtResource("2_esg6f")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+scale = Vector2(64, 64)
+polygon = PackedVector2Array(-16, -16, 16, -16, 16, -7, -4, -7, -4, 7, 16, 7, 16, 16, -16, 16)
+
+[node name="Area2D" type="Area2D" parent="."]
+scale = Vector2(64, 64)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 16)
+shape = SubResource("RectangleShape2D_oi63f")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(5, -7)
+shape = SubResource("RectangleShape2D_ektnu")
