@@ -1,0 +1,111 @@
+[gd_scene load_steps=6 format=3 uid="uid://b81aioya6myo8"]
+
+[ext_resource type="Script" path="res://script/menu_main.gd" id="1_h6e38"]
+[ext_resource type="AudioStream" uid="uid://bn7ftgl3hn1w2" path="res://art/Music/Song loop.mp3" id="2_jpmq4"]
+
+[sub_resource type="Animation" id="Animation_hkb1a"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_f3fkc"]
+resource_name = "Show"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7obys"]
+_data = {
+"RESET": SubResource("Animation_hkb1a"),
+"Show": SubResource("Animation_f3fkc")
+}
+
+[node name="menu_main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_h6e38")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 240.0
+offset_top = 147.0
+offset_right = 400.0
+offset_bottom = 213.0
+
+[node name="Play" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "PLAY"
+
+[node name="hover_sound_play" type="AudioStreamPlayer2D" parent="VBoxContainer/Play"]
+
+[node name="Quit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "QUIT
+"
+
+[node name="hover_sound_quit" type="AudioStreamPlayer2D" parent="VBoxContainer/Quit"]
+
+[node name="WASD text" type="Label" parent="."]
+layout_mode = 0
+offset_left = 258.5
+offset_top = 77.0
+offset_right = 381.5
+offset_bottom = 100.0
+text = "WASD TO MOVE"
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="WASD text"]
+libraries = {
+"": SubResource("AnimationLibrary_7obys")
+}
+autoplay = "Show"
+
+[node name="Q and E text" type="Label" parent="."]
+layout_mode = 0
+offset_left = 198.5
+offset_top = 107.0
+offset_right = 441.5
+offset_bottom = 130.0
+text = "Q AND E TO ZOOM IN AND OUT"
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Q and E text"]
+libraries = {
+"": SubResource("AnimationLibrary_7obys")
+}
+autoplay = "Show"
+
+[node name="menu_main_song" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_jpmq4")
+pitch_scale = 0.5
+autoplay = true
+
+[connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
+[connection signal="mouse_entered" from="VBoxContainer/Play" to="." method="_on_play_mouse_entered"]
+[connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]
