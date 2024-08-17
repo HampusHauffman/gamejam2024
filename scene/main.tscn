@@ -28,15 +28,16 @@ texture = SubResource("CanvasTexture_u4e3h")
 [node name="small_player_1" parent="." instance=ExtResource("1_ksvjd")]
 position = Vector2(-249, -229)
 
-[node name="Camera2D" type="Camera2D" parent="small_player_1"]
-unique_name_in_owner = true
-script = ExtResource("4_w7le7")
-
 [node name="Star" parent="." node_paths=PackedStringArray("players") instance=ExtResource("5_h7rfl")]
 position = Vector2(-336, -12)
 players = NodePath("../small_player_1")
 
 [node name="BasePlayer" parent="." instance=ExtResource("1_ksvjd")]
+position = Vector2(-10, -103)
 zoom = 2.0
 
-[connection signal="tree_entered" from="small_player_1/Camera2D" to="small_player_1/Camera2D" method="_on_tree_entered"]
+[node name="Camera2D" type="Camera2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-3, -49)
+position_smoothing_enabled = true
+script = ExtResource("4_w7le7")

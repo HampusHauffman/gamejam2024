@@ -24,10 +24,8 @@ func _physics_process(delta: float) -> void:
 	if isActive:
 		handle_input(delta)
 
-
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	state.linear_velocity.x = clamp(state.linear_velocity.x, -MAX_SPEED, MAX_SPEED)
-
 
 func handle_input(delta: float) -> void:
 	if not isActive:

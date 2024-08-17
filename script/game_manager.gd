@@ -5,6 +5,7 @@ class_name GameManager
 @export var active_player_index: int = 0
 # The list of players in the scene. These players are only referd to so the camera can switch between them.
 @export var players: Array[BasePlayer] = []
+@onready var camera_2d = %Camera2D
 
 
 # Called when the node enters the scene tree for the first time.
@@ -15,7 +16,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	camera_2d.targetPos = players[active_player_index].position
 
 
 func _input(event: InputEvent) -> void:
@@ -43,8 +44,5 @@ func change_active_player(direction: int) -> void:
 
 # Reparent the camera to the new active player
 func change_camera_parent(direction: int) -> void:
-	var camera: Camera2D = players[active_player_index-direction].get_node("Camera2D")
-	if camera:
-		camera.reparent(players[active_player_index])
-		# TODO make this smooth
-		camera.position = Vector2(0, 0)
+	#var camera: Camera2D = players[active_player_index-direction].get_node("Camera2D")
+	camera_2d._zoom(players[active_player_index-direction].zoom)
